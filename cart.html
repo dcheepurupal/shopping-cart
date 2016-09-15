@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shopping Cart</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <script type="text/javascript" src="cart.json"></script>
+
+</head>
+<body>
+   <div class="container">
+       <!--Header Container-->
+       <div class="header">
+           Your Shopping Bag
+       </div>
+       <hr/>
+
+        <div></div>
+
+
+       <!--Products Container-->
+       <div class="cartContainer clearfix">
+           <div class="row-fluid clearfix">
+               <div class="col-md-6">
+                  <strong>3</strong><span> ITEMS</span>
+               </div>
+               <div class="col-md-2 text-align-cent">
+                   <p>SIZE</p>
+               </div>
+               <div class="col-md-2 text-align-cent">
+                   <p>QTY</p>
+               </div>
+               <div class="col-md-2 text-align-cent">
+                   <p>PRICE</p>
+               </div>
+           </div>
+           <hr class="brod-divider"/>
+           <div id="products-placeholder"></div>
+           </hr>
+       </div>
+       <!--Footer Container-->
+       <div class="row-fluid footer clearfix">
+           <div class="col-md-4">
+                <div>
+                    <div><strong>Need help</strong></div>
+                    <div><strong>or have questions?</strong></div>
+                </div>
+               <div>
+                   <p>Call Customer Service at 1-800-555-5555</p>
+               </div>
+               <div>
+                   <p>Chat with one of the our stylists</p>
+               </div>
+               <div>
+                   <p>See return & exchange policy</p>
+               </div>
+           </div>
+           <div class="col-md-7 footer-main-cont">
+               <div id="cartSummary-placeholder"></div>
+           </div>
+       </div>
+
+
+
+
+       <!--Products Template-->
+       <script id="product-template" type="text/x-handlebars-template">
+           {{#productsInCart}}
+           <div class="row-fluid clearfix product-cont">
+               <div class="col-md-2">
+                   <div>
+                       <img src="img/T{{p_id}}.jpg" alt="">
+                   </div>
+               </div>
+               <div class="col-md-4 ">
+                   <div class="product-description">
+                       <div class="product-title title-uppercase"><strong>{{p_variation}} {{p_name}} </strong></div>
+                       <div class="product-style"><span>Style #:</span><span class="title-uppercase"> {{p_style}}</span></div>
+                       <div class="product-variation"><span>Colour : </span><span class="title-caps"> {{p_selected_color.name}}</span></div>
+                   </div>
+                   <div class="product-actions">
+
+                       <a class="title-uppercase edit-btn" data-item-id="{{p_id}}">EDIT</a>
+                       <a class="title-uppercase remove-btm" data-item-id="{{p_id}}" href="javascript:;">X REMOVE</a>
+                       <a class="title-uppercase" href="javascript:;"> SAVE FOR LATER</a>
+                   </div>
+               </div>
+               <div class="col-md-2 ">
+                   <div class="title-uppercase margin-top text-align-cent ">
+                       <strong>{{p_selected_size.code}}</strong>
+                   </div>
+               </div>
+               <div class="col-md-2">
+                   <div class="margin-top text-align-cent">
+                       <input type="text" name="product-quantity" size="2" value="{{p_quantity}}"/>
+                   </div>
+               </div>
+               <div class="col-md-2 margin-top text-align-cent">
+                   {{#ifCond p_originalprice p_price}}
+                        <div><span class="cur-type">{{c_currency}}</span><span class="cur-num">{{p_originalprice}}</span></div>
+                   {{else}}
+                         <div><span class="cur-type discount-cur">{{c_currency}}</span><span class="cur-num discount-price">{{p_originalprice}}</span></div>
+                         <div><span  class="cur-type">{{c_currency}}</span><span class="cur-num">{{p_price}}</span></div>
+                   {{/ifCond}}
+               </div>
+           </div>
+           <hr/>
+           {{/productsInCart}}
+       </script>
+
+
+       <script id="cartSummary-template" type="text/x-handlebars-template">
+           <div class="row-fluid clearfix margin-bot-20">
+               <div class="col-md-6 title-uppercase">
+                   enter promotion code or gift card
+               </div>
+               <div class="col-md-6 text-align-right">
+                   <span><input type="text" name="product-quantity" value=""/></span>
+                   <span><a>APPLY</a></span>
+               </div>
+           </div>
+           <hr class="brod-divider clearfix "/>
+           <div class="row-fluid clearfix margin-bot-20">
+               <div class="col-md-6 title-uppercase">
+                   <strong class="title-uppercase">subtotal</strong>
+               </div>
+               <div class="col-md-6">
+                   <div class="col-md-offset-5 col-md-7 text-align-cent">
+                       <span class="cur-type">$</span><span class="cur-num">59</span>
+                   </div>
+               </div>
+           </div>
+           <div class="row-fluid clearfix margin-bot-20">
+               <div class="col-md-6 title-uppercase">
+                   <strong class="title-uppercase">Promotion code <span>JF10</span> applied</strong>
+               </div>
+               <div class="col-md-6">
+                   <div class="col-md-offset-5 col-md-7 text-align-cent">
+                       <span class="cur-type">$</span><span class="cur-num">37</span>
+                   </div>
+               </div>
+           </div>
+           <div class="row-fluid clearfix margin-bot-20">
+               <div class="col-md-6">
+                   <div class="title-uppercase"><strong>estimated shipping*</strong></div>
+                   <div>
+                       <div>You qualify for free shipping</div>
+                       <div>because your order is over $50*</div>
+                   </div>
+               </div>
+               <div class="col-md-6 ">
+                   <div class="col-md-offset-5 col-md-7 text-align-cent">
+                       <strong>FREE</strong>
+                   </div>
+               </div>
+           </div>
+           <hr/>
+           <div class="row-fluid clearfix margin-bot-20">
+               <div class="col-md-6 title-uppercase">
+                   <div>
+                       <strong>ESTIMATED TOTAL</strong>
+                   </div>
+                   <div>
+                       <p>Tax will be applied during checkout</p>
+                   </div>
+               </div>
+               <div class="col-md-6">
+                   <div class="col-md-offset-5 col-md-7 text-align-cent">
+                       <span class="cur-type">$</span><span class="cur-num">37</span>
+                   </div>
+               </div>
+           </div>
+           <hr class="brod-divider"/>
+       </script>
+
+       <!--Product Overlay-->
+       <script id="editProduct-template" type="text/x-handlebars-template">
+
+           <div class="row-fluid clearfix" style="margin:50px" >
+               <div class="col-md-5">
+                  <div>
+                      {{p_name}}
+                  </div>
+                   <div>
+                       {{c_currency}}{{p_price}}
+                   </div>
+                   <div class="clearfix">
+                   {{#p_available_options}}
+                       {{#colors}}
+                         <span class="color-filter-item " style="background-color:{{hexcode}}"></span>
+                       {{/colors}}
+                   </div>
+                   <div>
+                       <span>
+                          <select>
+                           {{#sizes}}
+                           <option value="{{name}}"> {{name}}</option>
+                           {{/sizes}}
+                          </select>
+                        </span>
+                   {{/p_available_options}}
+                     <span>
+                       <select>
+                           <option value="{{p_quantity}}">{{p_quantity}}</option>
+                           <option value="2">2 </option>
+                           <option value="3">3</option>
+                       </select>
+                   </span>
+                   </div>
+
+               </div>
+               <div class="col-md-7">
+                   <div>
+                       <img src="img/T{{p_id}}.jpg" alt="">
+                   </div>
+
+               </div>
+
+           </div>
+
+       </script>
+
+       <div class="product-overlay">
+           <a class="close">×</a>
+           <div id="modalContent-placeholder"></div>
+       </div>
+   </div>
+   <script type="text/javascript" src="js/jquery-3.0.0.js"></script>
+   <script type="text/javascript" src="js/handlebars-latest.js"></script>
+   <script type="text/javascript" src="js/cart.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+   <script type="text/javascript" src="js/index.js"></script>
+
+</body>
+</html>

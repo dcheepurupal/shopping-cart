@@ -1,0 +1,34 @@
+<script id="product-template" type="text/x-handlebars-template">
+    {{#productsInCart}}
+    <div class="row-fluid clearfix">
+        <div class="col-md-2">
+            <div>
+                <img src="img/T{{p_id}}.jpg" alt="">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="product-description">
+                <div class="product-title">{{p_variation}}{{p_name}}</div>
+                <div class="product-style">Style #: {{p_style}}</div>
+                <div class="product-variation">Colour : {{p_selected_color.name}} </div>
+            </div>
+            <div class="product-actions">
+                <span>EDIT</span>
+                <span>X REMOVE</span>
+                <span> SAVE FOR LATER</span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <span>{{p_selected_size.code}}</span>
+        </div>
+        <div class="col-md-2">
+            <input type="text" name="product-quantity" size="1" value="{{p_quantity}}"/>
+        </div>
+        <div class="col-md-2">
+            <span>{{c_currency}}{{p_originalprice}}</span>
+            <span>{{c_currency}}{{p_price}}</span>
+        </div>
+    </div>
+    <hr/>
+    {{/productsInCart}}
+</script>

@@ -1,0 +1,125 @@
+.container{
+    background: #FFFFFF !important;
+}
+.header{
+    font-size: 4.5em;
+    color: #888888;
+    font-weight: 300;
+    padding: 0.5em 0 1em 0;
+    text-transform: uppercase;
+}
+
+hr:last-child, hr.brod-divider{
+    border: 3.5px solid #ddd;
+}
+.title-uppercase{
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.title-caps{
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+}
+.product-cont{
+    min-height: 150px;
+    margin: 2.45em 0;
+}
+.product-description{
+    margin-top: 15px;
+    position: relative;
+    min-height: 130px;
+}
+.product-actions{
+    position: absolute;
+    bottom: 0;
+}
+.product-cont{
+    position:relative;
+}
+.margin-top{
+    margin-top: 15px;
+}
+.text-align-cent{
+    text-align: center;
+}
+input[name="product-quantity"]{
+    text-align: center;
+    font-weight: bold;
+}
+.cur-num{
+    font-size: 25px;
+}
+.cur-type{
+    font-size:10px;
+}
+.product-actions a{
+    font-size: 13px;
+    border-right: 1px solid;
+    padding-right: 8px;
+    padding-left: 8px;
+    cursor: pointer;
+    color: inherit;
+}
+.product-actions a:last-child{
+    border-right: 0;
+}
+.product-actions a:first-child{
+    padding-left: 0;
+}
+.discount-price{
+    text-decoration: line-through;
+    color: #BBB;
+}
+.discount-cur{
+    color: #BBB;
+}
+
+/*Footer css*/
+.footer{
+    margin:40px 0;
+}
+.footer-main-cont{
+    float:right;
+    padding-right: 0;
+}
+.margin-bot-20{
+    margin-bottom: 25px;
+}
+.text-align-right{
+    text-align: right;
+}
+
+/*Modal Window*/
+.product-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display:none;
+    width: auto;
+    margin-left: -150px;
+    margin-top: -100px;
+    background-color: #FFF;
+    text-align: center;
+    z-index: 10;
+    outline: 9999px solid rgba(0,0,0,0.5);
+    line-height: 20px;
+}
+
+.color-filter-item{
+    float:left;
+    margin-right: 6px;
+    height: 27px;
+    width: 27px!important;
+    border: 1px solid #eee;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 0!important;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.color-filter-item:last-child{
+    margin-right: 0;
+}
